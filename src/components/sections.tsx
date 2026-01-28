@@ -7,8 +7,8 @@ function SectionRoot({ className, ...props }: SectionRootProps) {
   return (
     <div
       className={twMerge(
-        "bg-navy-800 rounded-xl border-[0.5px] border-navy-500 pt-3 flex flex-col gap-1",
-        className
+        "bg-navy-800 rounded-xl border-[0.5px] border-navy-500 pt-3 flex flex-col gap-1 relative",
+        className,
       )}
       {...props}
     />
@@ -33,7 +33,7 @@ function SectionTitle({ className, ...props }: SectionTitleProps) {
     <span
       className={twMerge(
         "bg-navy-700 rounded-lg px-3 py-1.5 flex items-center gap-2 text-xs",
-        className
+        className,
       )}
       {...props}
     />
@@ -54,8 +54,8 @@ function SectionContent({ className, ...props }: SectionContentProps) {
   return (
     <div
       className={twMerge(
-        "flex flex-col gap-2.5 overflow-y-auto p-3",
-        className
+        "flex flex-col gap-2.5 overflow-y-auto p-3 inset-0",
+        className,
       )}
       {...props}
     />
