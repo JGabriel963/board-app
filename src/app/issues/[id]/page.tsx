@@ -1,8 +1,19 @@
 import { Button } from "@/components/button";
 import { getIssue } from "@/http/get-issue";
-import { ArchiveIcon, MoveLeftIcon, ThumbsUpIcon } from "lucide-react";
+import {
+  ArchiveIcon,
+  MessageCircleIcon,
+  MoveLeftIcon,
+  ThumbsUpIcon,
+} from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import { IssueCommentsList } from "./issue-comments/issue-comments-list";
+import { Suspense } from "react";
+import { IssueCommentsSkeleton } from "./issue-comments/issue-comments-skeleton";
+import { Input } from "@/components/input";
+import { IssueLikeButton } from "./issue-like-button";
+import { Skeleton } from "@/components/skeleton";
 
 interface IssuePageProps {
   params: Promise<{ id: string }>;
@@ -47,10 +58,9 @@ export default async function Issue({ params }: IssuePageProps) {
           <ArchiveIcon className="size-4" />
           {statusLabels[issue.status]}
         </span>
-        <Button>
-          <ThumbsUpIcon className="size-3" />
-          <span className="text-sm">12</span>
-        </Button>
+        <Suspense fallback={<Skeleton className="h-7 w-16" />}>
+          <IssueLikeButton issueId={id} />
+        </Suspense>
       </div>
 
       <div className="space-y-2">
@@ -58,6 +68,27 @@ export default async function Issue({ params }: IssuePageProps) {
         <p className="text-navy-100 text-sm leading-relaxed">
           {issue.description}
         </p>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <span className="font-semibold">Comments</span>
+
+        <form className="relative w-full">
+          <Input
+            className="bg-navy-900 h-11 pr-24 w-full"
+            placeholder="Leave a comment..."
+          />
+          <button className="flex items-center gap-2 text-indigo-400 absolute right-3 top-1/2 -translate-y-1/2 text-xs hover:text-indigo-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+            Publish
+            <MessageCircleIcon className="size-3" />
+          </button>
+        </form>
+
+        <div className="mt-3">
+          <Suspense fallback={<IssueCommentsSkeleton />}>
+            <IssueCommentsList issueId={id} />
+          </Suspense>
+        </div>
       </div>
     </main>
   );

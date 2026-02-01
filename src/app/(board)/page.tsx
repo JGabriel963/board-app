@@ -41,7 +41,7 @@ export default async function Board({ searchParams }: BoardProps) {
             issues.backlog.map((issue) => (
               <Card.Root key={issue.id} href={`/issues/${issue.id}`}>
                 <Card.Header>
-                  <Card.Number>ISS-{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -51,7 +51,7 @@ export default async function Board({ searchParams }: BoardProps) {
                   </Button>
                   <Button>
                     <MessageCircleIcon className="size-3" />
-                    <span className="text-sm">12</span>
+                    <span className="text-sm">{issue.comments}</span>
                   </Button>
                 </Card.Footer>
               </Card.Root>
@@ -79,7 +79,7 @@ export default async function Board({ searchParams }: BoardProps) {
             issues.todo.map((issue) => (
               <Card.Root key={issue.id} href={`/issues/${issue.id}`}>
                 <Card.Header>
-                  <Card.Number>ISS-{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -89,7 +89,7 @@ export default async function Board({ searchParams }: BoardProps) {
                   </Button>
                   <Button>
                     <MessageCircleIcon className="size-3" />
-                    <span className="text-sm">12</span>
+                    <span className="text-sm">{issue.comments}</span>
                   </Button>
                 </Card.Footer>
               </Card.Root>
@@ -116,7 +116,7 @@ export default async function Board({ searchParams }: BoardProps) {
             issues.in_progress.map((issue) => (
               <Card.Root key={issue.id} href={`/issues/${issue.id}`}>
                 <Card.Header>
-                  <Card.Number>ISS-{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -126,7 +126,7 @@ export default async function Board({ searchParams }: BoardProps) {
                   </Button>
                   <Button>
                     <MessageCircleIcon className="size-3" />
-                    <span className="text-sm">12</span>
+                    <span className="text-sm">{issue.comments}</span>
                   </Button>
                 </Card.Footer>
               </Card.Root>
@@ -153,7 +153,7 @@ export default async function Board({ searchParams }: BoardProps) {
             issues.done.map((issue) => (
               <Card.Root key={issue.id} href={`/issues/${issue.id}`}>
                 <Card.Header>
-                  <Card.Number>ISS-{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -163,7 +163,7 @@ export default async function Board({ searchParams }: BoardProps) {
                   </Button>
                   <Button>
                     <MessageCircleIcon className="size-3" />
-                    <span className="text-sm">12</span>
+                    <span className="text-sm">{issue.comments}</span>
                   </Button>
                 </Card.Footer>
               </Card.Root>
